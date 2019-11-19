@@ -7,4 +7,4 @@ page {
     align-content: flex-start;
     flex-direction: column;
     box-sizing: border-box;
-} 
+}

@@ -1,19 +1,19 @@
 var conf = require('../conf.js');
 
-function isEmpty(obj){
-    if (typeof(obj) == "undefined" || (!obj && typeof(obj)!="undefined" && obj!=0)) {
+function isEmpty (obj) {
+    if (typeof (obj) == "undefined" || (!obj && typeof (obj) != "undefined" && obj != 0)) {
         return true;
     }
-    for (let i in obj){
+    for (let i in obj) {
         return false;
     }
     return true;
 }
 
-function urlParamCombine(arr) {
+function urlParamCombine (arr) {
     var param = "?";
     for (var key in arr) {
-        if(typeof(arr[key]) == 'array' || typeof(arr[key]) == 'object') {
+        if (typeof (arr[key]) == 'array' || typeof (arr[key]) == 'object') {
             for (var k in arr[key]) {
                 param += (k + "=" + arr[key][k] + "&");
             }
@@ -21,10 +21,10 @@ function urlParamCombine(arr) {
             param += (key + "=" + arr[key] + "&");
         }
     }
-    return param.substr(0, param.length-1);
+    return param.substr(0, param.length - 1);
 }
 
-function getUrl(route, params) {
+function getUrl (route, params) {
     var param = "";
     if (!isEmpty(params)) {
         param = urlParamCombine(params);
@@ -32,7 +32,7 @@ function getUrl(route, params) {
     return `https://${conf.baseDomain}${route}${param}`;
 }
 
-function matrixArr(list, elementsArr) {
+function matrixArr (list, elementsArr) {
     let matrix = [], i, k;
     for (i = 0, k = -1; i < list.length; i += 1) {
         if (i % elementsArr === 0) {
@@ -44,7 +44,7 @@ function matrixArr(list, elementsArr) {
     return matrix;
 }
 
-function imgUrlFix(url) {
+function imgUrlFix (url) {
     if (isEmpty(url)) {
         return url;
     }
@@ -53,8 +53,8 @@ function imgUrlFix(url) {
 }
 
 module.exports = {
-  isEmpty: isEmpty,
-  getUrl: getUrl,
-  matrixArr: matrixArr,
-  imgUrlFix: imgUrlFix
+    isEmpty: isEmpty,
+    getUrl: getUrl,
+    matrixArr: matrixArr,
+    imgUrlFix: imgUrlFix
 }

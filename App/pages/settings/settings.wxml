@@ -1,4 +1,4 @@
-<!--settings.wxml-->
+<!-- settings.wxml -->
 <view class="container-settings">
     <image class="img-avatar" src="{{avatarLink}}" mode="aspectFill"></image>
     <text class="link-text">{{githubLink}}</text>
