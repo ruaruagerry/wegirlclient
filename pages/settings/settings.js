@@ -1,11 +1,11 @@
 //index.js
-var util = require('../../../utils/util.js');
+var util = require('../../utils/util.js');
+var api = require('../../config/api.js');
 var app = getApp()
 
 Page({
     data: {
-        githubLink: 'https://github.com/litt1e-p',
-        avatarLink: app.globalData.userinfo.avatarurl,
+        userInfo: app.globalData.userinfo,
     },
     onLoad: function () {
         // 页面初始化 options为页面跳转所带来的参数

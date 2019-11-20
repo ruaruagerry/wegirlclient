@@ -1,4 +1,5 @@
-var conf = require('../conf.js');
+var api = require('../config/api.js');
+var app = getApp()
 
 function isEmpty (obj) {
     if (typeof (obj) == "undefined" || (!obj && typeof (obj) != "undefined" && obj != 0)) {
@@ -195,9 +196,16 @@ function getUserInfo () {
     });
 }
 
+function showErrorToast (msg) {
+    wx.showToast({
+        title: msg,
+        image: '/images/icon_error.png',
+        duration: 2000,
+    })
+}
+
 module.exports = {
     isEmpty,
-    getUrl,
     matrixArr,
     imgUrlFix,
     getUserInfo,
