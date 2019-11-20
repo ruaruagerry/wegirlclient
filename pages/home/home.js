@@ -1,9 +1,7 @@
 //index.js
-const config = require('../../conf.js');
-const util = require('../../utils/util.js');
-const request = require('../../utils/request.js');
+var util = require('../../utils/util.js');
+var api = require('../../config/api.js');
 
-var app = getApp()
 Page({
     data: {
         showLoading: false,
@@ -52,12 +50,16 @@ Page({
     },
     fetchTags () {
         this.showLoading('loading...');
-        console.log('url: ' + util.getUrl('/tags'));
-        return request({ method: 'GET', url: util.getUrl('/tags') });
+        return util.request(api.HomeGetTags)
     },
     fetchImgs (cid) {
         this.showLoading('loading...');
-        return request({ method: 'GET', url: util.getUrl('/girls', [{ c: !util.isEmpty(cid) ? cid : 'xinggan' }, { p: this.data.page }, { m: this.data.mid }]) });
+        var params = {
+            c: !util.isEmpty(cid) ? cid : 'xinggan',
+            p: this.data.page,
+            m: this.data.mid,
+        }
+        return util.request(api.HomeGetGirls, params, "POST")
     },
     showPreview (event) {
         if (this.data.showActionsSheet) {
@@ -67,7 +69,7 @@ Page({
         if (index > this.data.imgList.length - 1) {
             return;
         }
-        let previewIndex = this.data.imgList[index];
+        // let previewIndex = this.data.imgList[index];
         this.setData({ previewing: true, previewIndex: index });
     },
     dismissPreview () {
