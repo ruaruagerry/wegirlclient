@@ -2,6 +2,14 @@
 .container-settings {
     height:1200rpx;
 }
+
+.container-settings .btn {
+    width: 300rpx;
+    height: 100rpx;
+    /* margin-left: 220rpx; */
+    text-align: center;
+}
+
 .img-avatar {
   width: 258rpx;
   height: 258rpx;
@@ -15,5 +23,5 @@
   color: #46bd3c;
   margin-top: 20px;
   position: absolute;
-  left: 20%;
+  left: 48%;
 }

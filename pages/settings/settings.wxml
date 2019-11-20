@@ -2,7 +2,7 @@
 <view class="container-settings">
     <image class="img-avatar" src="{{userInfo.avatarurl}}" mode="aspectFill"></image>
     <text class="link-text">{{userInfo.nickname}}</text>
-    <button wx-if="{{userInfo.nickname==''}}" type="primary" open-type="getUserInfo" bindgetuserinfo="onWechatLogin">
+    <button class="btn" wx-if="{{userInfo.nickname==''}}" type="primary" open-type="getUserInfo" bindgetuserinfo="onWechatLogin">
         点击登录
     </button>
 </view>

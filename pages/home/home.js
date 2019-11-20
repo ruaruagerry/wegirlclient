@@ -15,7 +15,7 @@ Page({
         previewIndex: 0,
         showingActionsSheet: false,
         inActionImgUrl: '',
-        navItems: [],
+        tags: [],
         navBtnSelectIdx: 0,
         page: 1,
         mid: '',
@@ -116,7 +116,7 @@ Page({
     scroll (e) {
         this.setData({ scrollTop: e.detail.scrollTop });
     },
-    navItemTap (e) {
+    tagTap (e) {
         this.setData({
             scrollTop: -39,
         });
@@ -163,8 +163,8 @@ Page({
     },
     loadImgData (flush) {
         var cid;
-        if (!util.isEmpty(this.data.navItems)) {
-            cid = this.data.navItems[this.data.navBtnSelectIdx].cid;
+        if (!util.isEmpty(this.data.tags)) {
+            cid = this.data.tags[this.data.navBtnSelectIdx].cid;
         }
         this.fetchImgs(cid).then((resp) => {
             this.imgRespHandler(resp, flush);
@@ -173,11 +173,7 @@ Page({
     loadTagData () {
         this.fetchTags().then((resp) => {
             this.hideLoading();
-            if (resp.code !== 0) {
-                this.showToast('load failed, try again...');
-                return;
-            }
-            this.setData({ 'navItems': resp.data });
+            this.setData({ 'tags': resp.tags });
         });
     },
     onLoad () {

@@ -1,8 +1,8 @@
 <!-- index.wxml -->
 <view class="menu" style="display: {{!previewing ? 'block' : 'none'}};">
     <scroll-view scroll-x="true" class="top-nav">
-        <block wx:for="{{navItems}}" wx:for-item="item" wx:for-index="itemIdx">
-            <view bindtap="navItemTap" class="top-btn {{navBtnSelectIdx == itemIdx ? 'top-hoverd-btn' : ''}}" data-index="{{itemIdx}}" data-cid="{{item.cid}}">
+        <block wx:for="{{tags}}" wx:for-item="item" wx:for-index="itemIdx">
+            <view bindtap="tagTap" class="top-btn {{navBtnSelectIdx == itemIdx ? 'top-hoverd-btn' : ''}}" data-index="{{itemIdx}}" data-cid="{{item.cid}}">
                 {{item.title}}
             </view>
         </block>

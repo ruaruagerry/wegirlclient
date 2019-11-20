@@ -87,13 +87,13 @@ function utf8_decode (utftext) { // utf-8解码
  */
 function request (url, data = {}, method = "GET") {
     return new Promise(function (resolve, reject) {
-        if (url != api.AuthLogin && !app.globalData.token) {
-            wx.switchTab({
-                url: '/pages/settings/settings'
-            });
-            showErrorToast("请先登录")
-            return
-        }
+        // if (url != api.AuthLogin && !app.globalData.token) {
+        //     wx.switchTab({
+        //         url: '/pages/settings/settings'
+        //     });
+        //     showErrorToast("请先登录")
+        //     return
+        // }
 
         wx.request({
             url: url,
@@ -108,18 +108,18 @@ function request (url, data = {}, method = "GET") {
                     // server logic
                     if (res.data.result != 0) {
                         // token过期
-                        if (res.data.result == 11) {
-                            app.globalData.token = ""
-                            app.globalData.userinfo = {
-                                nickname: '',
-                                avatarurl: 'http://yanxuan.nosdn.127.net/8945ae63d940cc42406c3f67019c5cb6.png'
-                            }
-                            wx.switchTab({
-                                url: '/pages/settings/settings'
-                            });
-                            showErrorToast("请重新登录")
-                            return
-                        }
+                        // if (res.data.result == 11) {
+                        //     app.globalData.token = ""
+                        //     app.globalData.userinfo = {
+                        //         nickname: '',
+                        //         avatarurl: 'http://yanxuan.nosdn.127.net/8945ae63d940cc42406c3f67019c5cb6.png'
+                        //     }
+                        //     wx.switchTab({
+                        //         url: '/pages/settings/settings'
+                        //     });
+                        //     showErrorToast("请重新登录")
+                        //     return
+                        // }
 
                         showErrorToast("result:" + res.data.result + ", msg:" + res.data.msg)
                         reject(res.data.msg)
