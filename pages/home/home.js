@@ -18,7 +18,6 @@ Page({
         tags: [],
         navBtnSelectIdx: 0,
         page: 1,
-        mid: '',
         hasMore: true,
         scrollTop: 1,
         showLoadMore: false
@@ -55,9 +54,8 @@ Page({
     fetchImgs (cid) {
         this.showLoading('loading...');
         var params = {
-            c: !util.isEmpty(cid) ? cid : 'xinggan',
-            p: this.data.page,
-            m: this.data.mid,
+            cid: !util.isEmpty(cid) ? cid : 'xinggan',
+            page: this.data.page,
         }
         return util.request(api.HomeGetGirls, params, "POST")
     },
@@ -82,7 +80,7 @@ Page({
         this.setData({ showingActionsSheet: false, inActionImgUrl: '' });
     },
     showActionSheet (event) {
-        this.setData({ showingActionsSheet: true, inActionImgUrl: event.target.dataset.largesrc });
+        this.setData({ showingActionsSheet: true, inActionImgUrl: event.target.dataset.large });
     },
     saveImage () {
         this.showLoading('saving image...');
@@ -123,7 +121,7 @@ Page({
         let index = e.target.dataset.index;
         let cid = e.target.dataset.cid;
         if (index != this.navBtnSelectIdx) {
-            this.setData({ navBtnSelectIdx: index, page: 1, mid: '' });
+            this.setData({ navBtnSelectIdx: index, page: 1 });
             this.fetchImgs(cid).then(resp => {
                 this.imgRespHandler(resp, true);
             });
@@ -131,24 +129,19 @@ Page({
     },
     imgRespHandler (resp, flush) {
         this.hideLoading();
-        if (resp.code != 0) {
-            this.showToast('load failed, try again...');
-            this.setData({ page: this.data.page-- });
-            return;
-        }
-        if (util.isEmpty(resp.data)) {
+        if (util.isEmpty(resp.imgs)) {
             this.setData({ hasMore: false });
             this.showToast('all loaded...');
             this.setData({ page: this.data.page-- });
             return;
         }
         this.showToast('load successfully');
-        for (var index in resp.data) {
-            resp.data[index].largeSrc = util.imgUrlFix(resp.data[index].largeSrc);
-            resp.data[index].thumbSrc = util.imgUrlFix(resp.data[index].thumbSrc);
-            resp.data[index].smallSrc = util.imgUrlFix(resp.data[index].smallSrc);
+        for (var index in resp.imgs) {
+            resp.imgs[index].large = util.imgUrlFix(resp.imgs[index].large);
+            resp.imgs[index].thumb = util.imgUrlFix(resp.imgs[index].thumb);
+            resp.imgs[index].small = util.imgUrlFix(resp.imgs[index].small);
         }
-        this.setData({ 'imgList': flush ? resp.data : this.data.imgList.concat(resp.data), 'mid': resp.mid });
+        this.setData({ 'imgList': flush ? resp.imgs : this.data.imgList.concat(resp.imgs) });
         this.renderImgList();
     },
     onPullDownRefresh () {

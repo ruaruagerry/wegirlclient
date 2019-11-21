@@ -12,7 +12,7 @@
     <view class="img-container">
         <view class="item-group" wx:for="{{layoutList}}" wx:for-item="group" wx:for-index="groupIdx">
             <block wx:for="{{group}}" wx:for-item="item" wx:for-index="itemIdx">
-                <image bindtap="showPreview" data-index="{{itemIdx + groupIdx * 3}}" class="img-item {{!item ? 'empty' : ''}}" src="{{item.thumbSrc}}" mode="aspectFill"></image>
+                <image bindtap="showPreview" data-index="{{itemIdx + groupIdx * 3}}" class="img-item {{!item ? 'empty' : ''}}" src="{{item.thumb}}" mode="aspectFill"></image>
             </block>
         </view>
     </view>
@@ -29,7 +29,7 @@
 <swiper class="swiper-container" duration="400" current="{{previewIndex}}" bindtap="dismissPreview" style="display: {{previewing ? 'block' : 'none'}};">
     <block wx:for="{{imgList}}" wx:for-item="item">
         <swiper-item>
-            <image src="{{item.largeSrc}}" mode="aspectFit" bindlongtap="showActionSheet" data-largeSrc="{{item.largeSrc}}"></image>
+            <image src="{{item.large}}" mode="aspectFit" bindlongtap="showActionSheet" data-large="{{item.large}}"></image>
         </swiper-item>
     </block>
 </swiper>
