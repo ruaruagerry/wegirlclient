@@ -1,6 +1,7 @@
 //index.js
 var util = require('../../utils/util.js');
 var api = require('../../config/api.js');
+var app = getApp()
 
 Page({
     data: {
@@ -54,7 +55,7 @@ Page({
     fetchImgs (cid) {
         this.showLoading('loading...');
         var params = {
-            cid: !util.isEmpty(cid) ? cid : 'xinggan',
+            cid: !util.isEmpty(cid) ? cid : "0",
             page: this.data.page,
         }
         return util.request(api.HomeGetGirls, params, "POST")
@@ -169,9 +170,12 @@ Page({
             this.setData({ 'tags': resp.tags });
         });
     },
-    onLoad () {
-        this.renderImgList();
-        this.loadTagData();
-        this.loadImgData();
+    onShow () {
+        if (this.data.imgList.length == 0 && app.globalData.token) {
+            console.log("fuck enter")
+            this.renderImgList();
+            this.loadTagData();
+            this.loadImgData();
+        }
     }
 })
