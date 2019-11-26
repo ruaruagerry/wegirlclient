@@ -1,4 +1,4 @@
-const ApiRootUrl = 'http://127.0.0.1:3002';
+const ApiRootUrl = 'https://www.gerryluo.com/wegirl';
 
 module.exports = {
     AuthLogin: ApiRootUrl + '/auth/login', //登录

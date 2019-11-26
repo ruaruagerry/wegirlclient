@@ -8,7 +8,7 @@
         </block>
     </scroll-view>
 </view>
-<scroll-view class="container" lower-threshold="80" scroll-y="true" bindscrolltolower="loadMoreEvent" style="display: {{!previewing ? 'block' : 'none'}};" scroll-top="{{scrollTop}}" bindscroll="scroll">
+<scroll-view class="container" lower-threshold="80" scroll-y="true" bindscrolltolower="loadMoreEvent" style="display: {{!previewing ? 'block' : 'none'}};" bindscroll="scroll">
     <view class="img-container">
         <view class="item-group" wx:for="{{layoutList}}" wx:for-item="group" wx:for-index="groupIdx">
             <block wx:for="{{group}}" wx:for-item="item" wx:for-index="itemIdx">

@@ -28,7 +28,7 @@
 }
 
 .container {
-    height:1100rpx;
+    height:2500rpx;
     margin-top:39px;
 }
 
@@ -62,8 +62,6 @@
 .img-item.empty {
     background: transparent;
 }
-
-
 
 .swiper-container {
     position: fixed;
