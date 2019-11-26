@@ -12,7 +12,7 @@
     <view class="img-container">
         <view class="item-group" wx:for="{{layoutList}}" wx:for-item="group" wx:for-index="groupIdx">
             <block wx:for="{{group}}" wx:for-item="item" wx:for-index="itemIdx">
-                <image bindtap="showPreview" data-index="{{itemIdx + groupIdx * 3}}" class="img-item {{!item ? 'empty' : ''}}" src="{{item.thumb}}" mode="aspectFill"></image>
+                <image bindtap="showPreview" data-index="{{itemIdx + groupIdx * 3}}" class="img-item {{!item ? 'empty' : ''}} {{item.filter ? 'filter' : ''}}" src="{{item.thumb}}" mode="aspectFill"></image>
             </block>
         </view>
     </view>

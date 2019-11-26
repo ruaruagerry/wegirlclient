@@ -49,9 +49,21 @@
     line-height: 6.66rem;
 }
 
+.img-item.filter {
+    flex: 1;
+    margin: 0.1rem;
+    background: #333;
+    text-align: center;
+    height: 6.66rem;
+    line-height: 6.66rem;
+    filter:blur(4px);
+}
+
 .img-item.empty {
     background: transparent;
 }
+
+
 
 .swiper-container {
     position: fixed;
