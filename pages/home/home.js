@@ -20,7 +20,6 @@ Page({
         navBtnSelectIdx: 0,
         page: 1,
         hasMore: true,
-        scrollTop: 1,
         showLoadMore: false
     },
     showLoading (message) {
@@ -112,13 +111,10 @@ Page({
         });
         this.setData({ showingActionsSheet: false, inActionImgUrl: '' });
     },
-    scroll (e) {
-        this.setData({ scrollTop: e.detail.scrollTop });
-    },
     tagTap (e) {
-        this.setData({
-            scrollTop: -39,
-        });
+        wx.pageScrollTo({
+            scrollTop: 0
+        })
         let index = e.target.dataset.index;
         let cid = e.target.dataset.cid;
         if (index != this.navBtnSelectIdx) {
@@ -130,6 +126,7 @@ Page({
     },
     imgRespHandler (resp, flush) {
         this.hideLoading();
+        console.log("fuck enter enter")
         if (util.isEmpty(resp.imgs)) {
             this.setData({ hasMore: false });
             this.showToast('all loaded...');
