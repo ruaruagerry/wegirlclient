@@ -87,14 +87,13 @@ function utf8_decode (utftext) { // utf-8解码
  */
 function request (url, data = {}, method = "GET") {
     return new Promise(function (resolve, reject) {
-        if (url != api.AuthLogin && !app.globalData.token) {
-            wx.switchTab({
-                url: '/pages/settings/settings'
-            });
-            showErrorToast("请先登录")
-            return
-        }
-
+        // if (url != api.AuthLogin && !app.globalData.token) {
+        //     wx.switchTab({
+        //         url: '/pages/settings/settings'
+        //     });
+        //     showErrorToast("请先登录")
+        //     return
+        // }
         wx.request({
             url: url,
             data: data,

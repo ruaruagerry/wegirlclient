@@ -170,19 +170,9 @@ Page({
             this.setData({ 'tags': resp.tags });
         });
     },
-    onShow () {
-        if (this.data.imgList.length == 0 && app.globalData.token) {
-            console.log("fuck enter")
-            this.renderImgList();
-            this.loadTagData();
-            this.loadImgData();
-        }
-
-        if (!app.globalData.token) {
-            wx.switchTab({
-                url: '/pages/settings/settings'
-            });
-            util.showErrorToast("请先登录")
-        }
+    onLoad () {
+        this.renderImgList();
+        this.loadTagData();
+        this.loadImgData();
     }
 })
