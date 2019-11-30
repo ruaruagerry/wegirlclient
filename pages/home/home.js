@@ -176,7 +176,9 @@ Page({
             this.renderImgList();
             this.loadTagData();
             this.loadImgData();
-        } else {
+        }
+
+        if (!app.globalData.token) {
             wx.switchTab({
                 url: '/pages/settings/settings'
             });
