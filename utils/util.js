@@ -212,4 +212,5 @@ module.exports = {
     login,
     checkSession,
     request,
+    showErrorToast
 }

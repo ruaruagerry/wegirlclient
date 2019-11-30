@@ -176,6 +176,11 @@ Page({
             this.renderImgList();
             this.loadTagData();
             this.loadImgData();
+        } else {
+            wx.switchTab({
+                url: '/pages/settings/settings'
+            });
+            util.showErrorToast("请先登录")
         }
     }
 })
